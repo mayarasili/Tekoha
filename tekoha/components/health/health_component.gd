@@ -8,8 +8,8 @@ var health : int
 func _ready() -> void:
 	health = MAX_HEALTH
 
-func damage(attack: Attack) -> void:
-	health -= attack.attack_damage
+func damage(attack: AttackData) -> void:
+	health -= attack.damage
 
 	if health <= 0:
 		if get_parent() is Player:

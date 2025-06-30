@@ -9,19 +9,10 @@ func _ready() -> void:
 	radius_to_aim = 30
 	radius_to_move_away = 15
 	
-	attack_damage = 10
-	attack_knockback = 20
-	attack_stun_time = 0.5
-	
 	animation_tree = $AnimationTree
 	state_machine = $StateMachine
 	ray_cast = $RayCast
 	nav_agent = $NavigationAgent2D
-	
-	attack = Attack.new()
-	attack.attack_damage = attack_damage
-	attack.knockback_force = attack_knockback
-	attack.stun_time = attack_stun_time
 	
 	owner_info = OwnerInfo.new()
 	owner_info.owner_node = self

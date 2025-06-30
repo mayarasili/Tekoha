@@ -26,7 +26,7 @@ func shoot():
 			var projectile_instance: Projectile = projectile.instantiate()
 			get_tree().current_scene.add_child(projectile_instance)
 			projectile_instance.global_position = owner_node.global_position
-			projectile_instance.attack = owner_node.attack
+			projectile_instance.attack = owner_node.attack_data
 			projectile_instance.direction = (player.global_position - owner_node.global_position).normalized()
 
 func _on_animation_tree_animation_finished(anim_name: StringName) -> void:

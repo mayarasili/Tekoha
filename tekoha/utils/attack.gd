@@ -1,6 +1,6 @@
-class_name Attack
+class_name AttackData extends Resource
 
-var attack_damage: int
-var knockback_force: int
-var attack_position: Vector2
-var stun_time: float
+@export var damage: int
+@export var knockback: int
+@export var stun_duration: float
+var source: Vector2

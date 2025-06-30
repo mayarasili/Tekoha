@@ -12,10 +12,10 @@ func enter():
 		animation_root_node.travel("MeleeAttack01")
 		owner_node.velocity = Vector2.ZERO
 		weapon = owner_node.weapon
-		
-		weapon.attack_damage = owner_node.attack_damage
-		weapon.attack_knockback = owner_node.attack_knockback
-		weapon.stun_time = owner_node.attack_stun_time
+	
+		#weapon.attack_damage = owner_node.attack_damage
+		#weapon.attack_knockback = owner_node.attack_knockback
+		#weapon.stun_time = owner_node.attack_stun_time
 
 func exit():
 	stop_attack()

@@ -1,21 +1,12 @@
 class_name EnemyWeapon extends Node2D
 
-var attack_damage: int
-var attack_knockback: int
-var stun_time: float 
-
+@export var attack_data: AttackData
 @onready var weapon_collision: CollisionShape2D = $WeaponHitbox/WeaponCollision
 
-
-func _on_weapon_hitbox_area_entered(area: Area2D) -> void:
+func _on_weapon_hitbox_area_entered(area: Node2D) -> void:
 	if area.has_method("damage"):
-		var attack = Attack.new()
-		attack.attack_damage = attack_damage
-		attack.knockback_force = attack_knockback
-		attack.attack_position = global_position
-		attack.stun_time = stun_time
-		area.damage(attack)
-	
+		area.damage(attack_data)
+		
 func turn_down():
 	set_rotation_degrees(0)
 	
