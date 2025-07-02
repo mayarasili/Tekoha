@@ -1,10 +1,11 @@
-[gd_scene load_steps=208 format=3 uid="uid://1xpq00jgn0e3"]
+[gd_scene load_steps=209 format=3 uid="uid://1xpq00jgn0e3"]
 
 [ext_resource type="Script" uid="uid://b4eu17inv47gl" path="res://enemies/enemy_melee/enemy_melee.gd" id="1_7ov6s"]
 [ext_resource type="Script" uid="uid://cryb2wkdfpems" path="res://components/health/health_component.gd" id="1_8kmqy"]
 [ext_resource type="Script" uid="uid://cwa0a7ot3ldjx" path="res://components/hitbox/hitbox_component.gd" id="2_7ov6s"]
 [ext_resource type="Script" uid="uid://tw0uj662l6tg" path="res://enemies/enemy_melee/weapon.gd" id="2_y0jss"]
 [ext_resource type="Texture2D" uid="uid://b58f11355x6fs" path="res://enemies/enemy_melee/assets/Sword_6_Template_Attack_1_Down-Sheet.png" id="3_8kmqy"]
+[ext_resource type="Resource" uid="uid://vu8bltyxaxmh" path="res://enemies/enemy_melee/basic_attack.tres" id="3_y0jss"]
 [ext_resource type="Texture2D" uid="uid://dsxixteqjgq7n" path="res://enemies/enemy_melee/assets/Sword_6_Template_Attack_1_Left-Sheet.png" id="4_7ov6s"]
 [ext_resource type="Texture2D" uid="uid://b13t071flujym" path="res://enemies/enemy_melee/assets/Sword_6_Template_Attack_1_Right-Sheet.png" id="5_y0jss"]
 [ext_resource type="Texture2D" uid="uid://cg7t06dbovt2t" path="res://enemies/enemy_melee/assets/Sword_6_Template_Attack_1_Up-Sheet.png" id="6_fwkln"]
@@ -1938,6 +1939,7 @@ script = ExtResource("1_7ov6s")
 
 [node name="Weapon" type="Node2D" parent="."]
 script = ExtResource("2_y0jss")
+attack_data = ExtResource("3_y0jss")
 
 [node name="WeaponHitbox" type="Area2D" parent="Weapon"]
 position = Vector2(0, 10)

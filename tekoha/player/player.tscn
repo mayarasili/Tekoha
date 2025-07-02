@@ -1,8 +1,9 @@
-[gd_scene load_steps=293 format=3 uid="uid://cyo4xeitxgp01"]
+[gd_scene load_steps=294 format=3 uid="uid://cyo4xeitxgp01"]
 
 [ext_resource type="Script" uid="uid://dcux51y0uwrim" path="res://player/player.gd" id="1_roqei"]
 [ext_resource type="Script" uid="uid://bdxhos810vmao" path="res://player/weapon.gd" id="2_2uvqg"]
 [ext_resource type="Script" uid="uid://knlg3c1rm1tb" path="res://state_machine/state_machine.gd" id="2_iiiri"]
+[ext_resource type="Resource" uid="uid://cejniorm2i2fn" path="res://player/player_attack.tres" id="3_32hag"]
 [ext_resource type="Script" uid="uid://bxwysabrd85ff" path="res://player/animation_tree.gd" id="10_vdsp7"]
 [ext_resource type="Script" uid="uid://c1t1nokvik17k" path="res://player/states/state_idle.gd" id="11_sxs2u"]
 [ext_resource type="Script" uid="uid://dl821dpo14qbl" path="res://player/states/state_walk.gd" id="12_00lna"]
@@ -3033,6 +3034,7 @@ script = ExtResource("1_roqei")
 
 [node name="Weapon" type="Node2D" parent="."]
 script = ExtResource("2_2uvqg")
+attack = ExtResource("3_32hag")
 
 [node name="WeaponHitbox" type="Area2D" parent="Weapon"]
 position = Vector2(0, 10)

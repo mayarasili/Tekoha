@@ -8,12 +8,6 @@ var radius_to_follow: int
 var radius_to_aim: int
 var radius_to_move_away: int
 
-var attack: Attack
-
-var attack_damage: int
-var attack_knockback: int
-var attack_stun_time: float
-
 var animation_tree: AnimationTree
 var state_machine: StateMachine
 var ray_cast: RayCast2D

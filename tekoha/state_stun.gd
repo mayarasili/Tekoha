@@ -3,14 +3,14 @@ class_name StateStun extends State
 @export var stun_timer: Timer
 @export var hitbox: CollisionShape2D
 
-@onready var attack_info: Attack
+@onready var attack_info: AttackData
 
 func enter():
 	if state_machine.current_state.name == "Stun":
 		if owner_node is CharacterBody2D:
-			owner_node.velocity = -(attack_info.attack_position - owner_node.global_position).normalized() * attack_info.knockback_force
+			owner_node.velocity = -(attack_info.source - owner_node.global_position).normalized() * attack_info.knockback
 			
-		stun_timer.wait_time = attack_info.stun_time
+		stun_timer.wait_time = attack_info.stun_duration
 		stun_timer.start()
 		animation_root_node.travel("Stun")
 
@@ -25,7 +25,7 @@ func update(_delta: float):
 func physics_update(_delta: float):
 	pass
 
-func receive_attack_info(attack: Attack):
+func receive_attack_info(attack: AttackData):
 	attack_info = attack
 
 func _on_stun_timer_timeout() -> void:

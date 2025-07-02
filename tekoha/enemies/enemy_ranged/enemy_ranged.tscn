@@ -1,8 +1,9 @@
-[gd_scene load_steps=195 format=3 uid="uid://ddq6wns861ehm"]
+[gd_scene load_steps=196 format=3 uid="uid://ddq6wns861ehm"]
 
 [ext_resource type="Texture2D" uid="uid://cplr6jvoxf7uq" path="res://enemies/enemy_ranged/assets/Bow_6_Template_Attack_1_Down-Sheet.png" id="1_8pjee"]
 [ext_resource type="Script" uid="uid://bfxbj4sv2xjwl" path="res://enemies/enemy_ranged/enemy_ranged.gd" id="1_exuoc"]
 [ext_resource type="Texture2D" uid="uid://cnje41iv7ekab" path="res://enemies/enemy_ranged/assets/Bow_6_Template_Attack_1_Left-Sheet.png" id="2_hvbnd"]
+[ext_resource type="Resource" uid="uid://bj31mog8ri14a" path="res://enemies/enemy_ranged/ranged_attack.tres" id="2_ygbwh"]
 [ext_resource type="Texture2D" uid="uid://ntmksg78do1p" path="res://enemies/enemy_ranged/assets/Bow_6_Template_Attack_1_Right-Sheet.png" id="3_ij7f7"]
 [ext_resource type="Texture2D" uid="uid://dsw73n5qejdju" path="res://enemies/enemy_ranged/assets/Bow_6_Template_Attack_1_Up-Sheet.png" id="4_mxmuc"]
 [ext_resource type="Texture2D" uid="uid://be6s10c40s6aa" path="res://enemies/enemy_ranged/assets/Bow_7_Template_Attack_1_End_Down-Sheet.png" id="5_u3p5n"]
@@ -1792,6 +1793,7 @@ collision_mask = 201
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_exuoc")
+attack_data = ExtResource("2_ygbwh")
 
 [node name="HealthComponent" type="Node2D" parent="." node_paths=PackedStringArray("state_machine")]
 script = ExtResource("17_ij7f7")

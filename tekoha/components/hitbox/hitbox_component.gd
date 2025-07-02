@@ -4,7 +4,7 @@ class_name HitboxComponent extends Area2D
 @export var state_machine: StateMachine
 @export var stun_state: State
 
-func damage(attack: Attack):
+func damage(attack: AttackData):
 	if health_component:
 		health_component.damage(attack)
 		if stun_state and state_machine.current_state.name != "Stun" and state_machine.current_state.name != "Death":

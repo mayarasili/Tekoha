@@ -1,14 +1,12 @@
 class_name Projectile extends Node2D
 
-
-
 @export var speed : int
 
 @onready var animation_tree: AnimationTree = $AnimationTree
 
 @onready var player: CharacterBody2D = get_tree().get_first_node_in_group("player")
 
-var attack: Attack
+var attack: AttackData
 
 var direction: Vector2 = Vector2.ZERO
 
@@ -16,7 +14,7 @@ var direction: Vector2 = Vector2.ZERO
 func _process(delta: float) -> void:
 	animation_tree.set("parameters/blend_position", direction)
 	position += direction * speed * delta
-	attack.attack_position = global_position
+	attack.source = global_position
 
 
 func _on_hitbox_component_area_entered(area: Area2D) -> void:

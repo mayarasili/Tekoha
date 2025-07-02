@@ -15,9 +15,9 @@ func enter():
 		# Direção do ataque é a do mouse
 		owner_node.attack_direction = owner_node.mouse_direction
 		# Altera os valores do ataque
-		weapon.attack_damage = ATTACK_DAMAGE
-		weapon.attack_knockback = ATTACK_KNOCKBACK
-		weapon.stun_time = STUN_TIME
+		#weapon.attack_damage = ATTACK_DAMAGE
+		#weapon.attack_knockback = ATTACK_KNOCKBACK
+		#weapon.stun_time = STUN_TIME
 		# Animação de ataque
 		animation_root_node.travel("Attack01")
 
