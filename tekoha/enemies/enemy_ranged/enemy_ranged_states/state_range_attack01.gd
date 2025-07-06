@@ -23,7 +23,7 @@ func physics_update(_delta: float):
 func shoot():
 	if state_machine.current_state.name == "Attack01":
 		if player:
-			var projectile_instance: Projectile = projectile.instantiate()
+			var projectile_instance: ProjectileTest = projectile.instantiate()
 			get_tree().current_scene.add_child(projectile_instance)
 			projectile_instance.global_position = owner_node.global_position
 			projectile_instance.attack = owner_node.attack_data

@@ -1,9 +1,9 @@
 [gd_scene load_steps=15 format=3 uid="uid://bf5wdv2nlkiof"]
 
-[ext_resource type="Script" uid="uid://uxkfvxrngqbb" path="res://enemies/arrow.gd" id="1_cctq0"]
+[ext_resource type="Script" uid="uid://d2ch20ipqj5a1" path="res://enemies/projectile_test.gd" id="1_cctq0"]
 [ext_resource type="Texture2D" uid="uid://d3xpc1wojysnj" path="res://enemies/enemy_ranged/assets/Bow_11_Arrows-Sheet.png" id="1_pmhsu"]
-[ext_resource type="Script" uid="uid://cwa0a7ot3ldjx" path="res://components/hitbox/hitbox_component.gd" id="2_mu8vj"]
-[ext_resource type="Script" uid="uid://cryb2wkdfpems" path="res://components/health/health_component.gd" id="2_q2k86"]
+[ext_resource type="Resource" uid="uid://bj31mog8ri14a" path="res://enemies/enemy_ranged/ranged_attack.tres" id="3_gkksy"]
+[ext_resource type="Script" uid="uid://crbuif80vpqu2" path="res://enemies/hurtbox_component.gd" id="3_q2k86"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pmhsu"]
 size = Vector2(7, 7)
@@ -89,23 +89,18 @@ min_space = Vector2(-1.5, -1.5)
 max_space = Vector2(1.5, 1.5)
 blend_mode = 1
 
-[node name="Arrow" type="Node2D"]
+[node name="Arrow" type="Node2D" groups=["Projectile"]]
+light_mask = 0
 script = ExtResource("1_cctq0")
 speed = 200
 
-[node name="HealthComponent" type="Node2D" parent="."]
-script = ExtResource("2_q2k86")
-MAX_HEALTH = 1
-metadata/_custom_type_script = "uid://cryb2wkdfpems"
+[node name="HurtboxComponent" type="Area2D" parent="."]
+collision_layer = 255
+collision_mask = 255
+script = ExtResource("3_q2k86")
+Attack = ExtResource("3_gkksy")
 
-[node name="HitboxComponent" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]
-collision_layer = 16
-collision_mask = 4
-script = ExtResource("2_mu8vj")
-health_component = NodePath("../HealthComponent")
-metadata/_custom_type_script = "uid://cwa0a7ot3ldjx"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
 shape = SubResource("RectangleShape2D_pmhsu")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -125,5 +120,4 @@ parameters/blend_position = Vector2(0.00121844, 0)
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 
-[connection signal="area_entered" from="HitboxComponent" to="." method="_on_hitbox_component_area_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

@@ -3051,8 +3051,8 @@ script = ExtResource("14_lq6vg")
 state_machine = NodePath("../StateMachine")
 
 [node name="HitboxComponent" type="Area2D" parent="." node_paths=PackedStringArray("health_component", "state_machine", "stun_state")]
-collision_layer = 4
-collision_mask = 0
+collision_layer = 5
+collision_mask = 56
 script = ExtResource("15_hqlns")
 health_component = NodePath("../HealthComponent")
 state_machine = NodePath("../StateMachine")
@@ -3131,6 +3131,8 @@ one_shot = true
 one_shot = true
 
 [connection signal="area_entered" from="Weapon/WeaponHitbox" to="Weapon" method="_on_weapon_hitbox_area_entered"]
+[connection signal="area_entered" from="HitboxComponent" to="HitboxComponent" method="_on_area_entered"]
+[connection signal="body_entered" from="HitboxComponent" to="HitboxComponent" method="_on_body_entered"]
 [connection signal="animation_finished" from="AnimationTree" to="StateMachine/Attack01" method="_on_animation_tree_animation_finished"]
 [connection signal="animation_finished" from="AnimationTree" to="StateMachine/AttackEnd" method="_on_animation_tree_animation_finished"]
 [connection signal="animation_finished" from="AnimationTree" to="StateMachine/Attack02" method="_on_animation_tree_animation_finished"]
