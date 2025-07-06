@@ -8,7 +8,7 @@ var health : int
 func _ready() -> void:
 	health = MAX_HEALTH
 
-func damage(attack: AttackData) -> void:
+func take_damage(attack: AttackData) -> void:
 	health -= attack.damage
 
 	if health <= 0:
