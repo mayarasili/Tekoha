@@ -1802,7 +1802,7 @@ metadata/_custom_type_script = "uid://cryb2wkdfpems"
 
 [node name="HitboxComponent" type="Area2D" parent="." node_paths=PackedStringArray("health_component", "state_machine", "stun_state")]
 collision_layer = 32
-collision_mask = 0
+collision_mask = 2
 script = ExtResource("18_mxmuc")
 health_component = NodePath("../HealthComponent")
 state_machine = NodePath("../StateMachine")
