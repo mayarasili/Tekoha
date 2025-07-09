@@ -9,7 +9,6 @@ func _ready() -> void:
 	health = MAX_HEALTH
 
 func take_damage(attack: AttackData) -> void:
-	print(attack.damage)
 	health -= attack.damage
 
 	if health <= 0:
