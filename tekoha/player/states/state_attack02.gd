@@ -3,9 +3,9 @@ extends State
 var weapon: PlayerWeapon 
 
 const ATTACK_VELOCITY: int = 75
-#const ATTACK_DAMAGE: int = 30
-#const ATTACK_KNOCKBACK: int = 25
-#const STUN_TIME: float = 0.75
+const ATTACK_DAMAGE: int = 30
+const ATTACK_KNOCKBACK: int = 25
+const STUN_DURATION: float = 0.75
 
 func enter():
 	if state_machine.current_state.name == "Attack02":
@@ -17,9 +17,9 @@ func enter():
 		# Direção do ataque é a do mouse
 		owner_node.attack_direction = owner_node.mouse_direction
 		# Altera os valores do ataque
-		#weapon.attack_damage = ATTACK_DAMAGE
-		#weapon.attack_knockback = ATTACK_KNOCKBACK
-		#weapon.stun_time = STUN_TIME
+		weapon.hurtbox_component.Attack.damage = ATTACK_DAMAGE
+		weapon.hurtbox_component.Attack.knockback = ATTACK_KNOCKBACK
+		weapon.hurtbox_component.Attack.stun_duration = STUN_DURATION
 		# Animação de ataque
 		animation_root_node.travel("Attack02")
 

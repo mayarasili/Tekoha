@@ -4,6 +4,9 @@ class_name HitboxComponent extends Area2D
 @export var state_machine: StateMachine
 @export var stun_state: State
 
+func _ready() -> void:
+	self.area_entered.connect(_on_area_entered)
+
 func damage(attack: AttackData):
 	if health_component:
 		health_component.take_damage(attack)
@@ -11,8 +14,8 @@ func damage(attack: AttackData):
 			stun_state.receive_attack_info(attack)
 			state_machine.current_state.transition_to("Stun")
 			
-func _on_area_entered(attack: HurtboxComponent) -> void:
-	damage(attack.Attack)
-	var attacker = attack.get_parent()
+func _on_area_entered(hurtbox: HurtboxComponent) -> void:
+	damage(hurtbox.Attack)
+	var attacker = hurtbox.get_parent()
 	if attacker.is_in_group("Projectile"):
 		attacker.queue_free()

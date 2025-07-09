@@ -1,4 +1,4 @@
-[gd_scene load_steps=209 format=3 uid="uid://1xpq00jgn0e3"]
+[gd_scene load_steps=212 format=3 uid="uid://1xpq00jgn0e3"]
 
 [ext_resource type="Script" uid="uid://b4eu17inv47gl" path="res://enemies/enemy_melee/enemy_melee.gd" id="1_7ov6s"]
 [ext_resource type="Script" uid="uid://cryb2wkdfpems" path="res://components/health/health_component.gd" id="1_8kmqy"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://b58f11355x6fs" path="res://enemies/enemy_melee/assets/Sword_6_Template_Attack_1_Down-Sheet.png" id="3_8kmqy"]
 [ext_resource type="Resource" uid="uid://vu8bltyxaxmh" path="res://enemies/enemy_melee/basic_attack.tres" id="3_y0jss"]
 [ext_resource type="Texture2D" uid="uid://dsxixteqjgq7n" path="res://enemies/enemy_melee/assets/Sword_6_Template_Attack_1_Left-Sheet.png" id="4_7ov6s"]
+[ext_resource type="Script" uid="uid://crbuif80vpqu2" path="res://enemies/hurtbox_component.gd" id="4_fwkln"]
+[ext_resource type="Script" uid="uid://c8g5sugyv2xeg" path="res://utils/attack_data.gd" id="5_rqwnu"]
 [ext_resource type="Texture2D" uid="uid://b13t071flujym" path="res://enemies/enemy_melee/assets/Sword_6_Template_Attack_1_Right-Sheet.png" id="5_y0jss"]
 [ext_resource type="Texture2D" uid="uid://cg7t06dbovt2t" path="res://enemies/enemy_melee/assets/Sword_6_Template_Attack_1_Up-Sheet.png" id="6_fwkln"]
 [ext_resource type="Texture2D" uid="uid://cr4ma2g0ik3e6" path="res://enemies/enemy_melee/assets/Sword_7_Template_Attack_1_End_Down-Sheet.png" id="7_rqwnu"]
@@ -33,6 +35,13 @@
 [ext_resource type="Script" uid="uid://dj1dmecdpxa1m" path="res://enemies/generic_states/state_aim.gd" id="28_qmlx8"]
 [ext_resource type="Script" uid="uid://q5mphus1wgb3" path="res://enemies/enemy_melee/enemy_melee_states/state_melee_attack_01.gd" id="30_8kmqy"]
 [ext_resource type="Script" uid="uid://dp1cxsexln1iv" path="res://state_stun.gd" id="31_wpw5j"]
+
+[sub_resource type="Resource" id="Resource_pv0jw"]
+script = ExtResource("5_rqwnu")
+damage = 15
+knockback = 20
+stun_duration = 0.3
+metadata/_custom_type_script = "uid://c8g5sugyv2xeg"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fwkln"]
 size = Vector2(68, 39)
@@ -1941,12 +1950,15 @@ script = ExtResource("1_7ov6s")
 script = ExtResource("2_y0jss")
 attack_data = ExtResource("3_y0jss")
 
-[node name="WeaponHitbox" type="Area2D" parent="Weapon"]
+[node name="WeaponHurtbox" type="Area2D" parent="Weapon"]
 position = Vector2(0, 10)
-collision_layer = 0
+collision_layer = 16
 collision_mask = 4
+script = ExtResource("4_fwkln")
+Attack = SubResource("Resource_pv0jw")
+metadata/_custom_type_script = "uid://crbuif80vpqu2"
 
-[node name="WeaponCollision" type="CollisionShape2D" parent="Weapon/WeaponHitbox"]
+[node name="WeaponCollision" type="CollisionShape2D" parent="Weapon/WeaponHurtbox"]
 position = Vector2(0, 9.5)
 shape = SubResource("RectangleShape2D_fwkln")
 disabled = true
@@ -1958,7 +1970,7 @@ metadata/_custom_type_script = "uid://cryb2wkdfpems"
 
 [node name="HitboxComponent" type="Area2D" parent="." node_paths=PackedStringArray("health_component", "state_machine", "stun_state")]
 collision_layer = 32
-collision_mask = 0
+collision_mask = 2
 script = ExtResource("2_7ov6s")
 health_component = NodePath("../HealthComponent")
 state_machine = NodePath("../StateMachine")
@@ -2038,7 +2050,6 @@ one_shot = true
 [node name="NavigationTimer" type="Timer" parent="."]
 wait_time = 0.5
 
-[connection signal="area_entered" from="Weapon/WeaponHitbox" to="Weapon" method="_on_weapon_hitbox_area_entered"]
 [connection signal="animation_finished" from="AnimationTree" to="StateMachine/Attack01" method="_on_animation_tree_animation_finished"]
 [connection signal="timeout" from="StunTimer" to="StateMachine/Stun" method="_on_stun_timer_timeout"]
 [connection signal="timeout" from="NavigationTimer" to="StateMachine/Follow" method="_on_navigation_timer_timeout"]

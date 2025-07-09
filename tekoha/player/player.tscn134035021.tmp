@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://bdxhos810vmao" path="res://player/weapon.gd" id="2_2uvqg"]
 [ext_resource type="Script" uid="uid://knlg3c1rm1tb" path="res://state_machine/state_machine.gd" id="2_iiiri"]
 [ext_resource type="Script" uid="uid://crbuif80vpqu2" path="res://enemies/hurtbox_component.gd" id="3_tqiix"]
-[ext_resource type="Script" uid="uid://c8g5sugyv2xeg" path="res://utils/attack_data.gd" id="4_tqiix"]
+[ext_resource type="Script" uid="uid://c8g5sugyv2xeg" path="res://utils/attack_data.gd" id="4_e7oew"]
 [ext_resource type="Script" uid="uid://bxwysabrd85ff" path="res://player/animation_tree.gd" id="10_vdsp7"]
 [ext_resource type="Script" uid="uid://c1t1nokvik17k" path="res://player/states/state_idle.gd" id="11_sxs2u"]
 [ext_resource type="Script" uid="uid://dl821dpo14qbl" path="res://player/states/state_walk.gd" id="12_00lna"]
@@ -18,8 +18,8 @@
 [ext_resource type="Script" uid="uid://dksw0a2dtuj7o" path="res://player/states/state_roll.gd" id="32_1s1yo"]
 [ext_resource type="Script" uid="uid://dp1cxsexln1iv" path="res://state_stun.gd" id="37_pnw6m"]
 
-[sub_resource type="Resource" id="Resource_e7oew"]
-script = ExtResource("4_tqiix")
+[sub_resource type="Resource" id="Resource_c35mf"]
+script = ExtResource("4_e7oew")
 damage = 0
 knockback = 0
 stun_duration = 0.0
@@ -3047,7 +3047,7 @@ script = ExtResource("2_2uvqg")
 collision_layer = 2
 collision_mask = 48
 script = ExtResource("3_tqiix")
-Attack = SubResource("Resource_e7oew")
+Attack = SubResource("Resource_c35mf")
 metadata/_custom_type_script = "uid://crbuif80vpqu2"
 
 [node name="WeaponCollision" type="CollisionShape2D" parent="Weapon/HurtboxComponent"]
